@@ -1,4 +1,2 @@
-cp /bin/ls .
-ls -la
-file --mime-type -m school.mgc *
-file -m school.mgc *
+0 string SCHOOL School data
+!:mime School
