@@ -1,1 +1,2 @@
-0 search file  SCHOOL --mime-type -m school.mgc *
+0 String SCHOOL School data 
+!:mime School
