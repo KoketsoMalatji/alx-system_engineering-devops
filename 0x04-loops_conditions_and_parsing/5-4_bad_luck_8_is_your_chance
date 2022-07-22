@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 #prints a string 10 times
-j=0
-while [ $j != 11 ]
+x=0
+while [ $x != 11 ]
 do
-  if [ $j = 4 ]
+  if [ $x = 4 ]
   then
     echo "bad luck"
-  elif [ $j = 8 ]
+  elif [ $x = 8 ]
   then
     echo "good luck"
   else
     echo "Best School"
   fi
-  j=$(( j + 1 ))
+  x=$(( x + 1 ))
 done
