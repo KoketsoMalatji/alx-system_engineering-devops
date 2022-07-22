@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#prints a string 10 times
+
+counter=0
+until [ $counter -eq 10 ]
+do
+	echo "Best School"
+	counter=$(( counter + 1 ))
+done

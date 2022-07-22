@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# fizzbuzz problem
+j=0
+while [ $((j++)) -lt 100 ]; do
+	if [ $((j % 15)) -eq 0 ]; then
+		echo "FizzBuzz"
+	elif [ $((j % 5)) -eq 0 ]; then
+		echo "Buzz"
+	elif [ $((j % 3)) -eq 0 ]; then
+		echo "Fizz"
+	else
+		echo $j
+	fi
+done
