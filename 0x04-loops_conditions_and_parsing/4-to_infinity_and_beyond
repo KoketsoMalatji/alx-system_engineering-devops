@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
-# displays To infinity and beyond indefinitely
-pkill -f 4-to_infinity_and_beyond
+# Bash script that displays To infinity and beyond indefinitely.
+
+while true; do
+      echo "To infinity and beyond"
+      sleep 2
+done
