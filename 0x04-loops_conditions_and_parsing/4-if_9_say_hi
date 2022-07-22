@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# displays Best School 10 times.
+
+NUMBER=1
+while [ $NUMBER -lt 10 ]
+do
+    if [ $NUMBER = 9 ]
+    then
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+    let NUMBER+=1
+done
