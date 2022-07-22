@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# displays Best School 10 times.
+
+number=10
+until [ $number -lt 1 ]
+do
+    echo "Best School"
+    let number-=1
+done
