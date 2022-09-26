@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-# A Bash script that configures a new Ubuntu machine to respect the requirements:
-#+ Install nginx
-#+ Nginx should be listening on port 80
-#+ When querying Nginx at its root / with a GET request (requesting a page) using curl, it must return a page that contains the string Hello World!
+# installing nginx
 
-sudo apt-get -y update
-sudo apt-get -y upgrade
+sudo apt-get update
 sudo apt-get -y install nginx
+sudo ufw --force enable
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World!" | sudo tee -a /var/www/html/index.nginx-debian.html
+sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-enabled/default
+sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-enabled/default
+sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-available/default
+sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-available/default
 sudo service nginx start
-echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
