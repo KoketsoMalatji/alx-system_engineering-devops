@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
-# Configures a new Ubuntu server with a custom HTTP header response
-apt-get -y update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-sed -i '/listen 80 default_server;/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
-service nginx start
+# Configure Nginx so that its HTTP response contains a
+# custom header (on both web-01 and web-02 servers) 
+
+# Clone my repo and setup the server
+git clone https://github.com/KoketsoMalatji/alx-system_engineering-devops
+cd alx-system_engineering-devops/0x0C-web_server || exit
+./1-install_nginx_web_server
+./3-redirection
+./4-not_found_page_404
+
+# shellcheck disable=SC2116
+# shellcheck disable=SC2028
+new_url=$(echo "\tserver_name _;\n\tadd_header X-Served-By $HOSTNAME;")
+
+sudo sed -i "s/\tserver_name _;/$new_url/" /etc/nginx/sites-available/default
+sudo sed -i "s/\tserver_name _;/$new_url/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
