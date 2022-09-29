@@ -1,18 +1,8 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2086
-# displays information about subdomains
-
-display_info ()
-{
-    domain="$1"
-    subdomain="$2"
-    dig "$subdomain.$domain" | awk '/ANSWER SECTION:/{getline; printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var="$subdomain"
-}
-
-for subdomain in "www" "lb-01" "web-01" "web-02"
-do
-    if [ -z "$2" ] || [ "$2" == "$subdomain" ] ;
-    then
-	display_info "$1" "$subdomain"
-    fi
-done
+# to show the domain and if relevant, sub
+if [ $# -eq 1 ]; then
+	domains="www.$1 lb-01.$1 web-01.$1 web-02.$1"
+else
+	domains="$2.$1"
+fi
+dig $domains | awk '/ANSWER SECTION:/ { getline; split($1, a, "."); print "The subdomain", a[1], "is a", $4, "record and points to", $5}'
