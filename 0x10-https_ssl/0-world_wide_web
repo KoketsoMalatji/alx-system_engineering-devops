@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2086
-# display information about subdomains
+# displays information about subdomains
 
 display_info ()
 {
