@@ -1,4 +1,4 @@
-# Configure the Nginx to serve the route 
+# Configures Nginx to serve the route /airbnb-onepage/ from AirBnB_clone_v2.
 
 server {
     listen 80 default_server;
@@ -6,7 +6,7 @@ server {
 
     server_name 44.210.106.133;
 
-    add_header X-Served-By 233-web-01;
+    add_header X-Served-By 5628-web-01;
 
     location = /airbnb-onepage/ {
         proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
